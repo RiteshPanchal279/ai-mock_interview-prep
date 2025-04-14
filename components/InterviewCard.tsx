@@ -6,7 +6,7 @@ import Link from "next/link";
 import DisplayTechIcons from "./DisplayTechIcons";
 
 const InterviewCard = ({
-  interviewId,
+  id,
   userId,
   role,
   type,
@@ -39,7 +39,7 @@ const InterviewCard = ({
             <div className="flex flex-row gap-2">
               <Image
                 src="/calendar.svg"
-                alt="calender"
+                alt="calendar"
                 width={22}
                 height={22}
               />
@@ -61,8 +61,8 @@ const InterviewCard = ({
             <Link
               href={
                 feedback
-                  ? `interview/${interviewId}/feedback`
-                  : `interview/${interviewId}`
+                  ? `interview/${id}/feedback`
+                  : `interview/${id}`
               }
             >
               {feedback ? "Chack Feedback" : "View Interview"}
