@@ -7,7 +7,7 @@ import DisplayTechIcons from "./DisplayTechIcons";
 import { getFeedbackByInterviewId } from "@/lib/actions/general.action";
 
 const InterviewCard = async ({
-  id,
+  interviewId,
   userId,
   role,
   type,
@@ -15,8 +15,8 @@ const InterviewCard = async ({
   createdAt,
 }: InterviewCardProps) => {
   const feedback =
-    userId && id
-      ? await getFeedbackByInterviewId({ interviewId: id, userId })
+    userId && interviewId
+      ? await getFeedbackByInterviewId({ interviewId, userId })
       : null;
   const normalizedType = /mix/gi.test(type) ? "Mixed" : type;
 
@@ -33,10 +33,10 @@ const InterviewCard = async ({
           </div>
           <Image
             src={getRandomInterviewCover()}
-            alt="cober image "
+            alt="cover-image"
             width={90}
             height={90}
-            className="rounded-full object-fit"
+            className="rounded-full object-fit size-[90px]"
           />
           <h3 className="mt-5 capitalize">{role} Interview</h3>
           <div className="flex flex-row gap-5 mt-3">
@@ -63,9 +63,13 @@ const InterviewCard = async ({
           <DisplayTechIcons techStack={techstack} />
           <Button className="btn-primary">
             <Link
-              href={feedback ? `interview/${id}/feedback` : `interview/${id}`}
+              href={
+                feedback
+                  ? `interview/${interviewId}/feedback`
+                  : `interview/${interviewId}`
+              }
             >
-              {feedback ? "Chack Feedback" : "View Interview"}
+              {feedback ? "Check Feedback" : "View Interview"}
             </Link>
           </Button>
         </div>

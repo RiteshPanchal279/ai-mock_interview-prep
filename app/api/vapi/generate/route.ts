@@ -8,7 +8,7 @@ export  async function GET() {
 }
 
 export async function POST(request:Request) {
-   const {type,role,level,techstack,amount,userid}=await request.json();//accessint the req.body
+   const {type,role,level,techstack,amount,userid}=await request.json();//accessing the req.body
    try {
       const {text:questions}=await generateText({
          model:google('gemini-2.0-flash-001'),
@@ -31,11 +31,12 @@ export async function POST(request:Request) {
          role,type,level,
          techstack:techstack.split(','),
          questions:JSON.parse(questions),
+         userId:userid,
          finalized:true,
          coverImage:getRandomInterviewCover(),
          createdAt:new Date().toISOString()
       }
-      // adding tha data to DB
+      // adding the data to DB
       await db.collection('interviews').add(interview)
       
       return Response.json({success:true},{status:200});
