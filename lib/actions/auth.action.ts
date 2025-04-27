@@ -103,5 +103,5 @@ export async function getCurrentUser(): Promise<User | null>  {
 
 export async function isAuthenticated() {
    const user = await getCurrentUser();
-   return !!user; // we get boolean value usign !! trick
+   return !!user; // we get boolean value using !! trick
  }

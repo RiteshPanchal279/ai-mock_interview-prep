@@ -82,12 +82,6 @@ const page = async () => {
           ) : (
             <p>There are no interviews avilable</p>
           )}
-
-          {/* -------------------------------- */}
-
-          {/* {dummyInterviews.map((inter) => (
-            <InterviewCard {...inter} key={inter.id} />
-          ))} */}
         </div>
       </section>
     </>
